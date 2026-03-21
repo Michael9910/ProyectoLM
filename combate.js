@@ -1,3 +1,6 @@
+const modal = document.getElementById("modalInstrucciones")
+const botonInstrucciones = document.getElementById("botonInstrucciones")
+const cerrarModal = document.getElementById("cerrarModal")
 const divFotoJugador = document.getElementById('fotoJugador')
 const divFotoEnemigo = document.getElementById('fotoEnemigo')
 const sectionpantallaInicio = document.getElementById('pantallaInicio')
@@ -190,6 +193,13 @@ function pantallaInicio() {
     sectionpantallaInicio.style.display = 'flex'
 
     botonIniciar.addEventListener('click', iniciarJuego)
+    botonInstrucciones.addEventListener("click", () => {
+        modal.style.display = "flex"
+    })
+
+    cerrarModal.addEventListener("click", () => {
+        modal.style.display = "none"
+    })
 }
 
 function iniciarJuego() {
@@ -474,13 +484,9 @@ function pintarCanvas() {
     chikoritaEnemigo.pintarPokemon()
 
     if (pokemonJugadorObjeto.velocidadx !== 0 || pokemonJugadorObjeto.velocidady !== 0) {
-        revisarColision(zoruaEnemigo)
-        revisarColision(emolgaEnemigo)
-        revisarColision(weavileEnemigo)
-        revisarColision(tyrantrumEnemigo)
-        revisarColision(metagrossEnemigo)
-        revisarColision(grookeyEnemigo)
-        revisarColision(chikoritaEnemigo)
+        pokemonesEnemigos.forEach((enemigo) => {
+            revisarColision(enemigo)
+        })
     }
 }
 

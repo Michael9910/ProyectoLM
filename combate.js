@@ -31,7 +31,7 @@ let pokemones = []
 let botones = []
 let ataqueJugador = ""
 let ataqueEnemigo = ""
-let opcioDePokemon
+let opcionDePokemon
 let ataquesPokemonEnemigo
 
 let pokemonJugador
@@ -212,14 +212,14 @@ function iniciarJuego() {
     spanVidasEnemigo.innerHTML = vidasEnemigo
 
     pokemones.forEach((pokemon) => {
-        opcioDePokemon = `
+        opcionDePokemon = `
             <input type="radio" name="pokemon" id=${pokemon.nombre} />
             <label class="tarjetadePokemon" for="${pokemon.nombre}">
                 <img src=${pokemon.imagen} alt=${pokemon.nombre}>
                 <p>${pokemon.nombre}</p>
             </label>
             `
-        contenedorTarjetas.innerHTML += opcioDePokemon
+        contenedorTarjetas.innerHTML += opcionDePokemon
     })
 
     document.getElementById('botonPokemon').addEventListener('click', seleccionarPokemonJugador)
@@ -298,10 +298,10 @@ function ataqueAleatorioEnemigo() {
 }
 
 function combate() {
-    if (ataqueJugador === ataqueEnemigo) {
-        crearMensaje("EMPATE")
-    }
-    else if (
+    console.log("Jugador:", ataqueJugador)
+    console.log("Enemigo:", ataqueEnemigo)
+
+    if (
         (
             (ataqueJugador == "CHUZOS" || ataqueJugador == "CANTO HELADO" || ataqueJugador == "TRIPLE AXEL") &&
             (ataqueEnemigo == "COLA DRAGON" || ataqueEnemigo == "ATAQUE ALA" || ataqueEnemigo == "HOJA AFILADA" || ataqueEnemigo == "TERREMOTO")
@@ -418,7 +418,19 @@ function combate() {
         spanVidasJugador.innerHTML = vidasJugador
     }
     else {
-        crearMensaje("EMPATE")
+        let suerte = Math.random()
+
+        if (suerte < 0.33) {
+            crearMensaje("EMPATE")
+        } else if (suerte < 0.66) {
+            crearMensaje("¡Golpe inesperado!")
+            vidasEnemigo--
+            spanVidasEnemigo.innerHTML = vidasEnemigo
+        } else {
+            crearMensaje("El enemigo contraatacó")
+            vidasJugador--
+            spanVidasJugador.innerHTML = vidasJugador
+        }
     }
     revisarVidas()
 }
@@ -484,9 +496,13 @@ function pintarCanvas() {
     chikoritaEnemigo.pintarPokemon()
 
     if (pokemonJugadorObjeto.velocidadx !== 0 || pokemonJugadorObjeto.velocidady !== 0) {
-        pokemonesEnemigos.forEach((enemigo) => {
-            revisarColision(enemigo)
-        })
+        revisarColision(zoruaEnemigo)
+        revisarColision(emolgaEnemigo)
+        revisarColision(weavileEnemigo)
+        revisarColision(tyrantrumEnemigo)
+        revisarColision(metagrossEnemigo)
+        revisarColision(grookeyEnemigo)
+        revisarColision(chikoritaEnemigo)
     }
 }
 
@@ -585,31 +601,4 @@ function revisarColision(enemigo) {
     seleccionarPokemonEnemigo(enemigo)
 }
 
-function revisarColision(enemigo) {
-    const arribaEnemigo = enemigo.y
-    const abajoEnemigo = enemigo.y + enemigo.alto
-    const izquierdaEnemigo = enemigo.x
-    const derechaEnemigo = enemigo.x + enemigo.ancho
-
-    const arribaPokemon = pokemonJugadorObjeto.y
-    const abajoPokemon = pokemonJugadorObjeto.y + pokemonJugadorObjeto.alto
-    const izquierdaPokemon = pokemonJugadorObjeto.x
-    const derechaPokemon = pokemonJugadorObjeto.x + pokemonJugadorObjeto.ancho
-
-    if (
-        abajoPokemon < arribaEnemigo ||
-        arribaPokemon > abajoEnemigo ||
-        derechaPokemon < izquierdaEnemigo ||
-        izquierdaPokemon > derechaEnemigo
-    ) {
-        return;
-    }
-
-    detenerMovimiento()
-    clearInterval(intervalo)
-    sectionseleccionarAtaque.style.display = "flex"
-    sectionVerMapa.style.display = "none"
-    sectionpantallaInicio.style.display = 'none'
-    seleccionarPokemonEnemigo(enemigo)
-}
 window.addEventListener("load", pantallaInicio)

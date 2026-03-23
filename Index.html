@@ -1,97 +1,98 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8" />
-    <title>COMBATE POKEMON</title>
-    <link rel="stylesheet" href="/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/IMAGENES/ICON.ico">
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <title>COMBATE POKEMON</title>
+        <link rel="stylesheet" href="/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/IMAGENES/ICON.ico">
+    </head>
 
-<body>
-    <section id="pantallaInicio">
-        <h1 class="titulo">¡BIENVENIDO!</h1>
+    <body>
+        <section id="pantallaInicio">
+            <h1 class="titulo">¡BIENVENIDO!</h1>
 
-        <h2 class="subtitulo">COMBATE POKEMON</h2>
+            <h2 class="subtitulo">COMBATE POKEMON</h2>
 
-        <img src="/IMAGENES/BANER.png" alt="Baner">
+            <img src="/IMAGENES/BANER.png" alt="Baner">
 
-        <button id="botonIniciar">Iniciar Juego</button>
+            <button id="botonIniciar">Iniciar Juego</button>
 
-        <button id="botonInstrucciones">Instrucciones</button>
+            <button id="botonInstrucciones">Instrucciones</button>
 
-    </section>
+        </section>
 
-    <section id="seleccionaPokemon">
-        <h1 class="titulo">COMBATE POKEMON</h1>
+        <section id="seleccionaPokemon">
+            <h1 class="titulo">COMBATE POKEMON</h1>
 
-        <h2 class="subtitulo">Elige tu Entrenador:</h2>
+            <h2 class="subtitulo">Elige tu Entrenador:</h2>
 
-        <div id="contenedorTarjetas" class="tarjetas">
-        </div>
-
-        <button id="botonPokemon">Seleccionar</button>
-    </section>
-
-    <section id="verMapa">
-        <h2 class="subtitulo">Recorre el mapa</h2>
-
-        <canvas id="mapa"></canvas>
-    </section>
-
-    <section id="seleccionarAtaque">
-        <h1 class="titulo">COMBATE POKEMON</h1>
-
-        <h2 class="subtitulo">Elige tu Ataque:</h2>
-
-        <div class="seccionCombate">
-
-            <div id="fotoJugador" class="cajaFoto"></div>
-
-            <div id="contenedorAtaques" class="tarjetasAtaques">
+            <div id="contenedorTarjetas" class="tarjetas">
             </div>
 
-            <div id="fotoEnemigo" class="cajaFoto"></div>
+            <button id="botonPokemon">Seleccionar</button>
+        </section>
 
-        </div>
+        <section id="verMapa">
+            <h2 class="subtitulo">Recorre el mapa</h2>
 
-        <div id="mensajes">
-            <p id="resultado">¡Mucha Suerte!</p>
+            <canvas id="mapa"></canvas>
+        </section>
 
-            <section id="reiniciar">
-                <button id="botonReiniciar">Reiniciar</button>
-            </section>
-        </div>
+        <section id="seleccionarAtaque">
+            <h1 class="titulo">COMBATE POKEMON</h1>
 
-        <div class="ataques">
-            <div class="ataquesJugador">
-                <p id="vidasJugador">0</p>
-                <p id="pokemonJugador"></p>
-                <div id="ataquesJugador"></div>
+            <h2 class="subtitulo">Elige tu Ataque:</h2>
+
+            <div class="seccionCombate">
+
+                <div id="fotoJugador" class="cajaFoto"></div>
+
+                <div id="contenedorAtaques" class="tarjetasAtaques">
+                </div>
+
+                <div id="fotoEnemigo" class="cajaFoto"></div>
+
             </div>
-            <div class="ataquesEnemigo">
-                <p id="vidasEnemigo">0</p>
-                <p id="pokemonEnemigo"></p>
-                <div id="ataquesEnemigo"></div>
+
+            <div id="mensajes">
+                <p id="resultado">¡Mucha Suerte!</p>
+
+                <section id="reiniciar">
+                    <button id="botonReiniciar">Reiniciar</button>
+                </section>
             </div>
 
+            <div class="ataques">
+                <div class="ataquesJugador">
+                    <p id="vidasJugador">0</p>
+                    <p id="pokemonJugador"></p>
+                    <div id="ataquesJugador"></div>
+                </div>
+                <div class="ataquesEnemigo">
+                    <p id="vidasEnemigo">0</p>
+                    <p id="pokemonEnemigo"></p>
+                    <div id="ataquesEnemigo"></div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <div id="modalInstrucciones" class="modal">
+            <div class="modalContenido">
+                <span id="cerrarModal">&times;</span>
+
+                <h2>Instrucciones</h2>
+
+                <p>
+                    Usa W, A, S, D para moverte por el mapa.<br><br>
+                    Encuentra enemigos para iniciar combate.<br><br>
+                    Elige bien tus ataques para ganar.
+                </p>
+            </div>
         </div>
-
-    </section>
-
-    <div id="modalInstrucciones" class="modal">
-    <div class="modalContenido">
-        <span id="cerrarModal">&times;</span>
-
-        <h2>Instrucciones</h2>
-
-        <p>
-            Usa W, A, S, D para moverte por el mapa.<br><br>
-            Encuentra enemigos para iniciar combate.<br><br>
-            Elige bien tus ataques para ganar.
-        </p>
-    </div>
-</div>
-    <script src="/combate.js"></script>
-</body>
+        <script src="/combate.js"></script>
+    </body>
+</html>

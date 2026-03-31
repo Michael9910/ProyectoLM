@@ -1,0 +1,16 @@
+Idea de juego Pokémon copia
+
+La idea es hacer que aparezcan una imagen de personajes a elegir (serán compañeros de clase) con su respectivo poke, que se pueda mover con las flechas, que la maquina elija otro de manera aleatoria y al momento de encontrarse  empiece una "batalla" muy simple, que uno sirva contra otro, que se tengan 3 vidas (que si te pegan 3 veces ya mueras)
+
+Game loop
+Mapa estatico estilo 8bits, los personajes se mueven y atacan
+
+Mecanicas
+- Seleccionar personaje 
+- Movimiento arriba, abajo, izquierda y derecha
+- Ataque de personaje con su Pokémon
+- Perder vidas
+- Ganar o Perder
+- Jugar con otro compañero uno con WASD y otro con Flechas (opcional)
+- Que el mapa tenga movimiento de derecha a izquierda (opcional)
+- Reset
